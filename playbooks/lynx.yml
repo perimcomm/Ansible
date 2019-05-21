@@ -1,5 +1,8 @@
 ---
 - hosts: appserver
+  remote_user: teste
+  vars:
+  - vars.yml
   tasks:
   - name: Install lynx on App Server
     apt: pkg=lynx state=installed update_cache=true
