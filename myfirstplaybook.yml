@@ -1,3 +1,0 @@
---- #First playbook study
-- hosts: apacheweb
-  user: teste

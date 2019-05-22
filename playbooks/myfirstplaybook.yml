@@ -1,7 +1,7 @@
 --- #First playbook study
 - hosts: apacheweb
   become: yes
-  gather_facts: yes
+  gather_facts: no
   vars:
     playbook_version: 0.1b
   vars_files:
@@ -10,4 +10,10 @@
   vars_prompt:
     - name: web_domain
       prompt: web_domain
-
+  tasks:
+  - name: Install Apache Web Server
+    action: apt name=apache2 state=present
+    notify: Restart HTTP
+  handlers:
+  - name: Restart HTTP
+    action: service name=apache2 state=restarted

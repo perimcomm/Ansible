@@ -1,0 +1,14 @@
+- webservers
+- teste user
+- sudo rights
+
+- date time/stamps
+- inst all webserver
+- start web service
+
+- install client software
+  - telnet
+  - elinks
+
+- log all the packages installed on the system
+- date/time for when the playbook ends
