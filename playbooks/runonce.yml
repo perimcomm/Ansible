@@ -1,0 +1,11 @@
+--- #Runonce playbook 
+- hosts: all
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Run uptime command on all hosts
+      raw: /usr/bin/uptime >> /home/teste/uptime.log
+    - name: List the /var directory and log it
+      raw: ls -al /var >> /home/teste/dir.list
+      run_once: true

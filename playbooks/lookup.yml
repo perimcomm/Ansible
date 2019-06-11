@@ -1,0 +1,7 @@
+--- #Lookup example
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+    - debug: msg="{{ lookup('env', 'HOME') }} is the value listed"

@@ -1,0 +1,7 @@
+--- #Local Action import_playbook:
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+  tasks: 
+    - name: List tmp dir
+      raw: ls /tmp

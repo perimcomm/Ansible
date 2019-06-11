@@ -1,0 +1,31 @@
+--- #Outline playbook translation
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: date/time stamp when the playbook starts
+    raw: /bin/date > /home/teste/playbook_start.log
+  - name: Install apache web server
+    apt:
+      name: apache2
+      state: absent
+  - name: Start apache2
+    service:
+      name: apache2
+      state: stopped
+  - name: Verify service status
+    command: service apache2 status
+    register: result
+  - debug: var=result
+  - name: Install client software
+    apt:
+      name: "{{ packages }}"
+      state: absent
+      update_cache: yes
+    vars:
+      packages:
+      - telnet
+      - lynx
+  - name: When the playbook finish
+    raw: /bin/date 
