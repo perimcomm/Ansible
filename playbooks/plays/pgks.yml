@@ -1,0 +1,8 @@
+- name: Install the telnet client
+  apt:
+    pkg: telnet
+    state: latest
+- name: Install the lynx web browser
+  apt:
+    pkg: lynx
+    state: latest

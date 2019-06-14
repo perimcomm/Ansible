@@ -1,0 +1,18 @@
+--- #Until Playbook 
+- hosts: apacheweb
+  become: yes
+  user: teste
+  gather_facts: no
+  tasks:
+    - name: Installing Httpd
+      yum:
+        name: httpd
+        state: latest
+    - name: Service Status Verify
+      shell: systemctl status httpd
+      register: result
+      until: result.stdout.find("active (running)") != -1
+      retries: 5 
+      delay: 5
+    - debug: var=result
+

@@ -1,0 +1,14 @@
+--- #Prompt For user package 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  vars_prompt:
+    - name: pkgtoinstall
+      prompt: Install which package?
+      default: telnet
+      private: no 
+  tasks:
+    - name: Install the indicated package
+      apt: pkg={{ pkgtoinstall }} state=latest
+      

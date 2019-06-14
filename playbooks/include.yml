@@ -1,0 +1,9 @@
+--- #Full example of a playbook 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no 
+  tasks:
+  - include: plays/pgks.yml
+  - name: Verify the telnet is installed
+    raw: apt-get --installed | grep telnet >  /home/teste/pkg.log

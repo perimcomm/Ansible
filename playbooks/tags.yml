@@ -1,0 +1,24 @@
+--- #Tags func example 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no 
+  tasks:
+   -  name: Install the telnet and lynx packages
+      apt:
+        pkg: "{{ item }}"
+        state: latest
+      with_items:
+        - telnet
+        - lynx
+      tags:
+        - packages
+   - name: Verify telnet installed
+     raw: apt-cache search telnet
+     tags:
+       - verification
+
+
+#Ansible Run a tag: ansible-playbook playbook.yml --private-key path --tags nometag 
+#Ansible exlude a tag: ansible-playbook playbook.yml --private-key path --skip-tag nometag
+#Se a flag tag settar como "- always" ela sempre sera checkada
