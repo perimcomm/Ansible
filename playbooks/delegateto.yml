@@ -1,0 +1,12 @@
+--- #Delegate To Function Demo
+- hosts: apacheweb
+  become: yes
+  user: teste
+  tasks:
+  - name: Run a remote ping on application server
+    command: ping -c4 teste@periomcomm4c.mylabserver.com
+    delegate_to: 127.0.0.1
+  - name: Install a package
+    apt:
+      pkg: mysql
+      state: latest
