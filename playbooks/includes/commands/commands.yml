@@ -1,0 +1,2 @@
+- name: Make sure apache2 is installed
+  raw: service apache2 status 

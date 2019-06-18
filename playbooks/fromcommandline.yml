@@ -1,0 +1,10 @@
+--- #Variables at the command line
+- hosts: "{{ hosts }}"
+  user: "{{ user }}"
+  become: yes
+  gather_facts: no 
+  tasks:
+  - name: Install software
+    apt:
+      pkg: "{{ pkg }}"
+  

@@ -1,0 +1,12 @@
+--- #Local Action
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Ping Application Server
+    local_action: command ping -c4 periomcomm3c.mylabserver.com
+  - name: Install mysql
+    apt:
+      pkg: mysql
+      state: latest

@@ -1,0 +1,10 @@
+- name: Install the Apache Web Server
+  apt:
+    pkg: apache2
+    state: latest
+  notify: Restart HTTPD
+- name: Install the links web Browser
+  apt:
+    pkg: elinks
+    state: latest
+
