@@ -1,0 +1,17 @@
+--- #Debug Module Example
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Install the Web server
+    apt:
+      name: apache2
+      state: installed
+  - debug:
+      msg: "Equivalent  of sudo apt-get install httpd"
+  - name: How long the system is running
+    shell: /usr/bin/uptime
+    register: uptime
+  - debug:
+      var: uptime

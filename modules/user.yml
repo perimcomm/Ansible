@@ -1,0 +1,11 @@
+---
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Add the user called testapache
+    user:
+      name: testeapache
+      comment: "Apache Test"
+      shell: /bin/bash 

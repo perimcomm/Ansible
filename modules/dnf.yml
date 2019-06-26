@@ -1,0 +1,10 @@
+--- # DNF Module Example
+- hosts: control
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Install with DNF
+    dnf:
+      name: httpd
+      state: latest
