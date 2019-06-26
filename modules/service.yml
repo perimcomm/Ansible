@@ -1,0 +1,18 @@
+--- #Service Module
+- hosts: control
+  user: teste
+  become: yes
+  tasks:
+  - name: Install HTTPD
+    yum:
+      pkg: httpd
+      state: latest
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+  - name: Enable Httpd after reboot
+    service:
+      name: httpd
+      enabled: yes
+      

@@ -1,0 +1,7 @@
+---
+- hosts: apacheweb
+  user: teste
+  become: yes 
+  gather_facts: no 
+  tasks:
+    - debug: msg="{{ lookup('env','HOME') }} e o valor da variavel"

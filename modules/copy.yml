@@ -1,0 +1,18 @@
+--- #Copy Files
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Copy from the files dir test files
+    copy:
+      src: teste1.txt
+      dest: /home/teste/teste1.txt
+  - name: Copy second file
+    copy:
+      src: files/teste3.txt
+      dest: /home/teste/teste2.txt
+      mode: 0644
+      owner: teste
+      group: teste
+      backup: yes

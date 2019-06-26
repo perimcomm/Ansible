@@ -1,0 +1,15 @@
+---
+- hosts: apacheweb
+  user: teste
+  become: yes
+  tasks:
+  - name: Install Apache2
+    apt:
+      pkg: apache2
+      state: present
+    when: ansible_os_family == "Debian"
+  - name: Install Httpd
+    yum:
+      pkg: httpd
+      state: present
+    when: ansible_os_family == "RedHat"

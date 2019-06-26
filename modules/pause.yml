@@ -1,0 +1,17 @@
+--- #Pause playbook
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Install HTTPD
+    apt:
+      pkg: apache2
+      state: installed
+  - name: Pause
+    pause:
+      prompt: "Make sure the installation is complete..."
+  - name: Verify Lynx installtion
+    apt:
+      pkg: lynx
+      state: present

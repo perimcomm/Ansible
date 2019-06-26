@@ -1,0 +1,14 @@
+---
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no 
+  tasks:
+  - name: Atividade 1
+    command: mkdir -p /home/teste/Playbooks && touch date_25062019.yml
+  - name: Atividade 2.1
+    apt:
+      pkg: lynx
+      state: present
+  - name: Atividade 2.2
+    command: apt list --installed | grep telnet

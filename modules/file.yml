@@ -1,0 +1,12 @@
+--- #Setup Module
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: File property
+    file:
+      path: /tmp/teste.log
+      state: touch
+      mode: 0755
+     
