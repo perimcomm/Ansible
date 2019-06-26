@@ -1,0 +1,10 @@
+--- #Command Module Example
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Check Python packages
+    command: uptime
+    args:
+      chdir: /home/teste
