@@ -1,0 +1,13 @@
+--- #SetFact Module Example
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no 
+  tasks:
+  - name: Local Variable Display
+    set_fact:
+    singlefact: SOMETHING
+  - debug:
+      msg: "{{ playbook_version }}"
+  - debug:
+      msg: "{{ playbook_test }}"

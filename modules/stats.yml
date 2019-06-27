@@ -1,0 +1,14 @@
+--- #Stat Example Module
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no 
+  tasks:
+  - name: File dir in a path exist
+    stat:
+      path: /home/teste/banana
+    register: p
+  - debug:
+      msg: "Path exist and it is a dir"
+      when: p.stat.isdir is defined and p.stat.isdir
+  

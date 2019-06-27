@@ -1,0 +1,10 @@
+---
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no 
+  tasks:
+  - name: Disable alias module in Apache2
+    apache2_module:
+      state: absent
+      name: alias
