@@ -1,0 +1,5 @@
+- name: Install Apache Web Server
+  apt:
+    pkg: apache2
+    state: latest
+  notify: Restart Apache2
