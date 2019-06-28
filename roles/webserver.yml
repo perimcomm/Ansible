@@ -3,5 +3,11 @@
   user: teste
   become: yes
   connection: ssh
+  pre_tasks:
+    - name: When long the Role begun
+      raw: date > /home/teste/startrole.log
   roles:
     - webserver
+  post_tasks:
+  - name: When did the role end
+    raw: date > /home/teste/endrole.log
