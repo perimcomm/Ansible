@@ -1,0 +1,13 @@
+--- # Master Playbook for WebServers
+- hosts: apacheweb
+  user: teste
+  become: yes
+  connection: ssh
+  pre_tasks:
+    - name: When long the Role begun
+      raw: date > /home/teste/startrole.log
+  roles:
+    - { role: redhat_webservers, when: "ansible_os_family == 'RedHat'"}
+  post_tasks:
+  - name: When did the role end
+    raw: date > /home/teste/endrole.log

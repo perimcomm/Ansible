@@ -1,0 +1,12 @@
+- name: Install Httpd (Centos/RedHat)
+  yum:
+    pkg: "{{ redhat_apache }}"
+    state: latest
+  when: "ansible_os_family == 'RedHat'"
+- name: Waiting the service to start listening on port 80 ##Aguarda restart do servico da aplicacao manualmente
+  wait_for:
+    port: 80
+    state: started
+- debug: Need to install telnet
+  when: "ansible_os_family == 'RedHat'"
+  notify: install telnet
