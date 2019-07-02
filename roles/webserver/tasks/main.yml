@@ -1,5 +1,13 @@
-- name: Install Apache Web Server
+- name: Install Apache2 (Debian)
   apt:
-    pkg: apache2
+    pkg: "{{ debian_apache }}"
     state: latest
-  notify: Restart Apache2
+  when: "ansible_os_family == 'Debian'"
+  notify: restart apache2 
+
+- name: Install Httpd (Centos/RedHat)
+  yum:
+    pkg: "{{ redhat_apache }}"
+    state: latest
+  when: "ansible_os_family == 'RedHat'"
+  notify: restart httpd
