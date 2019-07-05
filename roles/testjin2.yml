@@ -1,0 +1,17 @@
+--- #Test Jinja2
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: yes
+  vars:
+    userName: teste
+    userPassword: senha123
+    connectionType: ssh
+  tasks:
+  - name: Instala de acordo com o sistema
+    template:
+      src: /home/bruno/Documentos/workspace/infra/ansible/roles/webserver/files/teste.conf
+      dest: teste.conf.j2
+      owner: teste
+      group: teste
+      mode: 750

@@ -4,6 +4,7 @@
     state: latest
   when: "ansible_os_family == 'Debian'"
   notify: restart apache2 
+  tags: restarta_servico
 
 - name: Install Httpd (Centos/RedHat)
   yum:
