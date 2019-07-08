@@ -11,7 +11,8 @@
   - name: Instala de acordo com o sistema
     template:
       src: /home/bruno/Documentos/workspace/infra/ansible/roles/webserver/files/teste.conf
-      dest: teste.conf.j2
+      dest: /tmp/teste.conf.j2
       owner: teste
       group: teste
       mode: 750
+    delegate_to: 127.0.0.1
