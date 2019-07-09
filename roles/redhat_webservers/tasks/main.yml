@@ -7,6 +7,6 @@
   wait_for:
     port: 80
     state: started
-- debug: Need to install telnet
+  debug: "Need to install telnet"
   when: "ansible_os_family == 'RedHat'"
   notify: install telnet
