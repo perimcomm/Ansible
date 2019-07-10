@@ -1,0 +1,12 @@
+---  #SEBoolean Module 
+- hosts: control
+  user: teste
+  become: yes
+  gather_facts: no
+  connection: no
+  tasks:
+  - name: Alterando Boolean para Anonymous Write no Control Server
+    seboolean:
+      name: httpd_anon_write
+      state: yes
+      persistent: yes
