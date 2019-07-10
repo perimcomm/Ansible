@@ -1,0 +1,12 @@
+--- #Mail module
+- hosts: control
+  user: teste
+  become: yes
+  tasks:
+  - name: Enviar email apos finalizacao de build
+    mail:
+      host: 'localhost'
+      port: 25
+      to: "teste"
+      subject: "Deploy status"
+      body: "A maquina {{ ansible_hostname }} finalizou o deploy" 
