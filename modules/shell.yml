@@ -1,0 +1,12 @@
+--- #Example Shell Module 
+- hosts: control
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Executando comando remoto - uptime
+    shell: /usr/bin/uptime
+    register: result
+  - debug: 
+      var: result
+      verbosity: 2

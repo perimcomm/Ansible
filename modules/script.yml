@@ -1,0 +1,8 @@
+--- #Script module example
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: How long the system is running
+    script: "/home/bruno/Documentos/workspace/infra/ansible/modules/files/systemuptime.sh"
