@@ -1,0 +1,11 @@
+--- #GET_URL Module
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Get and download the INI file from the web server
+    get_url:
+    url: http://periomcomm4c.mylabserver.com/myteste.ini
+    dest: /home/teste/myteste.ini
+    mode: 0440
