@@ -1,0 +1,8 @@
+--- #Ping Module 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Pinging hosts
+    ping:

@@ -1,0 +1,9 @@
+--- #Raw Module 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Uptime
+    raw: /usr/bin/uptime > uptime.log:w

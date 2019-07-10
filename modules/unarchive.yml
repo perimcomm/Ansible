@@ -1,0 +1,11 @@
+--- #Unarchive example 
+- hosts: control
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Untar archive
+    unarchive:
+      src: "files.tar.gz"
+      dest: "/home/teste/"
+      
