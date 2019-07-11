@@ -1,0 +1,13 @@
+--- #Mount Module Example
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Mount a partition
+    mount:
+      name: /mnt/data
+      src: /dev/xvdf1
+      fstype: ext3
+      opts: ro
+      state: present

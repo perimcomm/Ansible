@@ -1,0 +1,17 @@
+--- #Template Module 
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: yes
+  vars:
+    userName: teste
+    userPassword: megasenha
+    connectionType: SFTP
+  tasks:
+  - name: Install the configuration file to the system
+    template:
+      src: ./files/config.conf.j2
+      dest: /home/teste/teste.conf
+      owner: teste
+      group: teste
+      mode: 750

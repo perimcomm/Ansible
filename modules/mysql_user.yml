@@ -1,0 +1,18 @@
+--- #MYSQL_USER module 
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install the MySql Support library
+    yum:
+      pkg: MYSQL-python
+      state: latest
+  - name: Create a new user called bob and give him access
+    mysql_user:
+      name: bob
+      password: passwd123
+      priv: "*.*ALL"
+      state: present
+      login_user: root
+      login_password: passwordteste

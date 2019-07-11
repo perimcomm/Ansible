@@ -1,0 +1,16 @@
+--- #MYSQL_Module
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install Python MySQL Library
+    yum:
+      pgk: MYSQL-python
+      state: latest
+  - name: Create a new test DB MyNewDatabase
+    mysql_db:
+      name: MyNewDatabase
+      state: present
+      login_user: root
+      login_password: passwordtest

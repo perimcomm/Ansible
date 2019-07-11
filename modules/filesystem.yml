@@ -1,0 +1,11 @@
+--- #FileSystem Module Example 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Format disk
+    filesystem:
+      fstype: ext3
+      dev: /dev/xvdf1
+      opts: "-cc"

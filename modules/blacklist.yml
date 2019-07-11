@@ -1,0 +1,10 @@
+--- #BlackList kernel 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Blacklist Dummy Kernel module
+    kernel_blacklist:
+      name: dummy
+      state: present

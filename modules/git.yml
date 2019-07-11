@@ -1,0 +1,9 @@
+--- #Git Module Example
+- hosts: apacheweb
+  user: teste
+  gather_facts: no
+  tasks:
+  - name: Checkout git repo from server
+    git:
+      repo: git@github.com:perimcomm/Ansible.git
+      dest: /home/teste/gitrepo

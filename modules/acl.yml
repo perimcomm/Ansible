@@ -1,0 +1,16 @@
+--- #ACL Module
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Get ACL Information from /etc/teste.acl.txt remove file
+    acl:
+      name: /etc/hosts
+      entity: teste
+      etype: user
+      permissions: 'r'
+      state: present
+    register: aclinfo
+  - debug:
+      msg: "{{ aclinfo }}"
