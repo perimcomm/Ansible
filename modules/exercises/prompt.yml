@@ -1,0 +1,22 @@
+--- #Prompt Module Exercise
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: yes
+  vars_prompt:
+    - name: pkginstall
+      prompt: Which package
+      default: telnet
+      private: no
+  tasks:
+  - name: Which package should be installed 
+    apt:
+      pkg: "{{ pkginstall }}"
+      state: latest
+    when: ansible_os_family == "Debian"
+  - name: Which package should be installed
+    yum:
+      pkg: "{{ pkginstall }}"
+      state: latest
+    when: ansible_os_family == "RedHat"
+    

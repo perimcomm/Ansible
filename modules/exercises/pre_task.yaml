@@ -1,0 +1,33 @@
+--- #PreTask Module Example
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: yes
+  pre_tasks:
+    - name: Starting
+      command: 'echo "Starting" '
+  
+  tasks:
+  - name: Installing Packages Debian
+    apt: 
+      pkg: "{{ item }}"
+      state: latest
+    with_items:
+    - telnet
+    - apache2
+    - lynx
+    when: ansible_os_family == "Debian"
+  
+  - name: Installing Packages Centos
+    yum:
+      pkg: "{{ item }}"
+      state: latest
+    with_items:
+    - telnet
+    - httpd 
+    - lynx
+    when: ansible_os_family == "RedHat"
+  
+  post_tasks:
+    - name: Finalizando o playbook
+      raw: 'echo "goodbye"'

@@ -1,0 +1,8 @@
+--- #Includes Module exercise
+- hosts: appserver
+  user: teste
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Removendo telnet
+    include: plays/telnet.yml

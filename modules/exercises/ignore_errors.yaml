@@ -1,0 +1,16 @@
+--- #Ignore erros Exercise
+- hosts: control
+  user: teste
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Atualizando repositorios
+    apt:
+      pkg: "*"
+      state: latest
+    ignore_errors: true
+  
+  - name: Installing Telnet Client
+    yum:
+      pkg: telnet
+      state: latest
