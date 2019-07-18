@@ -1,0 +1,66 @@
+--- #Creating Apache web server 
+- hosts: apacheweb
+  user: teste
+  become: yes
+  gather_facts: yes
+  vars:
+    apache_pkg: httpd
+    apache_version: 2.4
+    apache_dir: /var/www/example
+    apache_fqdn: periomcomm3c.mylabserver.com
+
+  tasks:
+  - name: Installing Apache2
+    apt:
+      pkg: apache2
+      state: "{{ apache_version }}"
+    when: ansible_os_family == 'Debian'
+  
+  - name: Creating web server directory
+    file:
+      path: "{{ apache_dir }}"
+      state: directory
+      mode: 644
+  
+  - name: Copy the apache config file to remote host
+    copy:
+      src: files/httpd.conf.template
+      dest: /etc/httpd/conf/httpd.conf
+      owner: root
+      group: root
+      mode: 644
+  
+  - name: Creating the Vhost directory on the remote host
+    file:
+      path: /etc/httpd/vhost.d
+      state: directory
+      mode: 644
+  
+  - name: Copy and untar the source for the site
+    unarchive:
+      src: files/sitecode.tar.gz
+      dest: /var/www/sample
+  
+  - name: Copy the Vhost configuration file
+    copy:
+      src: files/default.conf.template
+      dest: /etc/httpd/vhost.d/default.conf
+      owner: root
+      group: root
+      mode: 655
+    notify: start_httpd
+  
+  - name: Installing HTTPD
+    yum:
+      pkg: httpd
+      state: "{{ apache_version }}"
+    when: ansible_os_family == 'RedHat'
+
+  - name: Test apacheweb server
+    shell: curl http://periomcomm3c.mylabserver.com
+
+  handlers:
+  - name: start_httpd
+    service:
+      name: httpd
+      state: started

@@ -1,0 +1,35 @@
+- Build an Apache Web Server
+- Deploy the Web Server with the Ansible useer
+- Ansible user needs sudo
+- Connection type ssh
+- Gather Facts ON
+=====================================================
+
+- Info Needed:
+  - apache web server
+  - distribution running on
+  - apache version
+  - need the web server directory customized
+  - what is the site name
+
+- What needs to be done
+  - install the apache web server on the remote system
+  - create the web server directory
+  - web server directory has proper ownership
+  - configuration of apache
+    - copy the httpd.conf
+    - set up the vhost.d directory
+    - add any ssl keys if needed
+  - copy the site to the new directory
+  - start the apache service
+  - add/enable any modules need
+    - mysql
+    - ssl
+    - mod/rewrite
+  - restart the apache service
+
+- Test
+  - using lynx/telnet that the web service is running
+    - waitfor port 80 listening
+
+
